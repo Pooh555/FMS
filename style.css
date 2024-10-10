@@ -103,7 +103,15 @@ header:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* overflow: hidden; */
+    overflow: hidden;
+    transition: height 0.2s ease;
+    transform: scale(0);
+    transition: height 0.2s ease;
+}
+
+.wrapper.active {
+    height: 520px;
+
 }
 
 .wrapper .form-box {
@@ -112,7 +120,24 @@ header:hover {
 }
 
 .wrapper .form-box.login {
-    display: none;
+    transition: transform 0.60s ease;
+    transform: translateX(0);
+}
+
+.wrapper.active .form-box.login {
+    transition:0.6s ease;
+    transform: translateX(-400px);
+}
+
+.wrapper .form-box.register {
+    position: absolute;
+    transition: 0.6s ease;
+    transform: translateX(400px);
+}
+
+.wrapper.active .form-box.register {
+    transition: transform 0.60s ease;
+    transform: translateX(0);
 }
 
 
