@@ -103,11 +103,32 @@ header:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* overflow: hidden; */
 }
 
 .wrapper .form-box {
     width: 100%;
     padding: 40px;
+}
+
+.wrapper .form-box.login {
+    display: none;
+}
+
+
+.wrapper .icon-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: #381616;
+    font-size: 2em;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    border-bottom-left-radius: 10px;
 }
 
 .form-box h2 {
@@ -195,4 +216,22 @@ header:hover {
     font-size: 1em;
     color: #ffffff;
     font-weight: 500;
+}
+
+.login-register {
+    font-size: 9.em;
+    color: #381616;
+    text-align: center;
+    font-weight: 400;
+    margin: 25px 0 10px;
+}
+
+.login-register p a {
+    color: #381616;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-register p a:hover {
+    text-decoration: underline;
 }
