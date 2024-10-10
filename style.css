@@ -106,7 +106,7 @@ header:hover {
     align-items: center;
     overflow: hidden;
     transform: scale(0);
-    transition: transform 0.5s ease height 0.2s ease;
+    transition: transform 0.5s ease;
 }
 
 .wrapper.active-popup{
