@@ -5,17 +5,33 @@
     box-sizing: border-box;
 }
 
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url("/assets/images/background_home.jpg") no-repeat;
+    background-position:top;
+    background-size: auto;
+}
+
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     padding: 20px 100px;
-    background: red;
+    background: rgba(7, 7, 7, 0.5);
+    background-blend-mode: overlay;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 99;
+    transition: 0.5s;
+}
+
+header:hover {
+    background: rgba(61, 49, 49, 0.85);
 }
 
 .logo {
@@ -31,6 +47,11 @@ header {
     text-decoration: none;
     font-weight: 500;
     margin-left: 40px;
+    transition: .3s;
+}
+
+.navigation a:hover {
+    color: #ffc0c6;
 }
 
 .navigation a::after {
@@ -40,7 +61,7 @@ header {
     bottom: -6px;
     width: 100%;
     height: 2px;
-    background: #ffffff;
+    background: #ffe3e6;
     border-radius: 5px;
     transform: scaleX(0);
     transform-origin: center;
@@ -68,5 +89,5 @@ header {
 
 .navigation .btnLogin-popup:hover {
       background: #ffffff;
-      color: #162938;
+      color: #914a51;
 }
