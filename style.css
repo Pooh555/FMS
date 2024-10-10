@@ -106,7 +106,7 @@ header:hover {
     align-items: center;
     overflow: hidden;
     transform: scale(0);
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease, height 0.2s ease;
 }
 
 .wrapper.active-popup{
@@ -120,6 +120,7 @@ header:hover {
 .wrapper .form-box {
     width: 100%;
     padding: 40px;
+    z-index: 1;
 }
 
 .wrapper .form-box.login {
@@ -128,7 +129,7 @@ header:hover {
 }
 
 .wrapper.active .form-box.login {
-    transition:0.6s ease;
+    transition: 0.6s ease;
     transform: translateX(-400px);
 }
 
@@ -143,7 +144,6 @@ header:hover {
     transform: translateX(0);
 }
 
-
 .wrapper .icon-close {
     position: absolute;
     top: 0;
@@ -157,6 +157,7 @@ header:hover {
     justify-content: center;
     align-items: center; 
     border-bottom-left-radius: 10px;
+    overflow: hidden;
 }
 
 .form-box h2 {
