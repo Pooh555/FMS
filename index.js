@@ -103,9 +103,8 @@ iconClose.addEventListener("click", () => {
   }, 300);
 });
 
-let usernameInput;
-let emailInput;
-let passwordInput;
+let usernameInput, emailInput, passwordInput;
+let usernameInputLength, emailInputLength, passwordInputLength;
 
 // Test
 /*
@@ -122,19 +121,11 @@ class User {
   }
 
   set username(newUsername) {
-    if (newUsername != null && newUsername.length >= 3 && newUsername.length <= 12)
-      this._username = newUsername;
-    else if (newUsername.length > 12)
-      console.error("Username must be no longer than 12 letters.");
-    else console.error("Username must be atleast 3 letters long.");
+    this._username = newUsername
   }
 
-  set password(newPassword) {
-    if (newPassword != null && newPassword.length >= 8 && newPassword <= 20)
-      this._password = newPassword;
-    else if (newPassword.length >= 20)
-      console.error("Password must be no longer than 20 letters.");
-    else console.error("Password must be atleast 8 letters long.");
+  set password(passwordInput) {
+    this._password = passwordInput;
   }
 
   set email(newEmail) {
@@ -154,6 +145,7 @@ class User {
   }
 }
 
+const warningMessage = document.getElementById("warningAuth");
 const rememberMe = document.getElementById("rememberMe");
 const agreeToTerms = document.getElementById("agreeToTerms");
 
@@ -172,6 +164,9 @@ login.onclick = function () {
   // Test
   console.log(`email: ${emailInput}`);
   console.log(`password: ${passwordInput}`);
+
+  // Create a user instance
+  const currentUser = new User(usernameInput, passwordInput, emailInput);
 };
 
 register.onclick = function () {
@@ -186,11 +181,33 @@ register.onclick = function () {
   usernameInput = registerForm.querySelector('input[type="username"]').value;
   emailInput = registerForm.querySelector('input[type="email"]').value;
   passwordInput = registerForm.querySelector('input[type="password"]').value;
-  
+
+  // Check the validity of the input
+  usernameInputLength = Number(usernameInput.length);
+  passwordInputLength = Number(passwordInput.length);
+  emailInputLength = Number(emailInput.length);
+
+  if (usernameInputLength >= 3 && usernameInputLength <= 12)
+  {
+    if (passwordInputLength >= 8 && passwordInputLength <= 20) {
+      if (emailInputLength > 0)
+        warningMessage.textContent = null;
+      else warningMessage.textContent = "Email is invalid.";
+    }
+    else if (passwordInput.Length >= 20)
+      warningMessage.textContent = "Password must be no longer than 20 letters.";
+    else warningMessage.textContent = "Password must be atleast 8 letters long.";
+  }
+  else if (usernameInputLength >= 12)
+    warningMessage.textContent = "Username must be no longer than 12 letters.";
+  else warningMessage.textContent = "Username must be atleast 3 letters long.";
+
   // Test
   console.log(`username: ${usernameInput}`);
   console.log(`email: ${emailInput}`);
   console.log(`password: ${passwordInput}`);
+
+  // Create a user instance
+  const currentUser = new User(usernameInput, passwordInput, emailInput);
 };
 
-// const currentUser = new User(usernameInput, passwordInput, emailInput);

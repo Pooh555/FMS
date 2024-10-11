@@ -364,3 +364,9 @@ header:hover {
 .login-register p a:hover {
     text-decoration: underline;
 }
+
+.warning {
+    font-size: 16.5px;
+    font-weight: 800px;
+    color: #ff6575;
+}
