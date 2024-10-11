@@ -5,7 +5,7 @@ const dot1 = document.querySelector("#dot1");
 const dot2 = document.querySelector("#dot2");
 const dot3 = document.querySelector("#dot3");
 
-let slideIndex = 0;
+let slideIndex = 2;
 
 showSlidesAuto(); // Automatically change the slide
 
@@ -29,7 +29,8 @@ function showSlides(n) {
   if (n < 1) slideIndex = slides.length;
 
   for (i = 0; i < slides.length; i++) slides[i].style.display = "none";
-  for (i = 0; i < dots.length; i++) dots[i].className = dots[i].className.replace(" active", "");
+  for (i = 0; i < dots.length; i++)
+    dots[i].className = dots[i].className.replace(" active", "");
 
   slides[slideIndex - 1].style.display = "block";
   dots[slideIndex - 1].className += " active";
@@ -113,15 +114,16 @@ console.log("Password:", passwordInput);
 console.log("Email:", emailInput);
 */
 
+let currentUser;
 class User {
   constructor(username, password, email) {
     this.username = username;
-    this.password = password; 
+    this.password = password;
     this.email = email;
   }
 
   set username(newUsername) {
-    this._username = newUsername
+    this._username = newUsername;
   }
 
   set password(passwordInput) {
@@ -156,7 +158,7 @@ login.onclick = function () {
   else console.log("The data will be forgotten.");
 
   // Scope the input
-  const loginForm = document.querySelector('.form-box.login');
+  const loginForm = document.querySelector(".form-box.login");
 
   // Get email and password
   usernameInput = loginForm.querySelector('input[type="username"]').value;
@@ -166,34 +168,25 @@ login.onclick = function () {
   usernameInputLength = Number(usernameInput.length);
   passwordInputLength = Number(passwordInput.length);
 
-  if (usernameInputLength >= 3 && usernameInputLength <= 12)
-  {
-    if (passwordInputLength >= 8 && passwordInputLength <= 20) {
-        warningLoginMessage.textContent = null;
-    }
-    else if (passwordInputLength >= 20)
-      warningLoginMessage.textContent = "Password must be no longer than 20 letters.";
-    else warningLoginMessage.textContent = "Password must be atleast 8 letters long.";
-  }
-  else if (usernameInputLength >= 12)
-    warningLoginMessage.textContent = "Username must be no longer than 12 letters.";
-  else warningLoginMessage.textContent = "Username must be atleast 3 letters long.";
+  checkRegistration(usernameInputLength, passwordInputLength);
 
   // Test
   console.log(`Username: ${usernameInput}`);
   console.log(`Password: ${passwordInput}`);
 
   // Create a user instance
-  const currentUser = new User(usernameInput, passwordInput, null);
+  currentUser = new User(usernameInput, passwordInput, null);
+  logUser(currentUser);
 };
 
 register.onclick = function () {
   // Evaluate checkbox status
-  if (agreeToTerms.checked) console.log("The user has agreed to the terms and conditions.");
+  if (agreeToTerms.checked)
+    console.log("The user has agreed to the terms and conditions.");
   else console.log("The user does not accept the terms and conditions.");
 
   // Scope the input
-  const registerForm = document.querySelector('.form-box.register');
+  const registerForm = document.querySelector(".form-box.register");
 
   // Get username and password
   usernameInput = registerForm.querySelector('input[type="username"]').value;
@@ -205,20 +198,7 @@ register.onclick = function () {
   passwordInputLength = Number(passwordInput.length);
   emailInputLength = Number(emailInput.length);
 
-  if (usernameInputLength >= 3 && usernameInputLength <= 12)
-  {
-    if (passwordInputLength >= 8 && passwordInputLength <= 20) {
-      if (emailInputLength > 0)
-        warningRegisterMessage.textContent = null;
-      else warningRegisterMessage.textContent = "Email is invalid.";
-    }
-    else if (passwordInputLength >= 20)
-      warningRegisterMessage.textContent = "Password must be no longer than 20 letters.";
-    else warningRegisterMessage.textContent = "Password must be atleast 8 letters long.";
-  }
-  else if (usernameInputLength >= 12)
-    warningRegisterMessage.textContent = "Username must be no longer than 12 letters.";
-  else warningRegisterMessage.textContent = "Username must be atleast 3 letters long.";
+  checkRegistration(usernameInputLength, emailInputLength, passwordInputLength);
 
   // Test
   console.log(`Username: ${usernameInput}`);
@@ -226,6 +206,49 @@ register.onclick = function () {
   console.log(`Password: ${passwordInput}`);
 
   // Create a user instance
-  const currentUser = new User(usernameInput, passwordInput, emailInput);
+  currentUser = new User(usernameInput, passwordInput, emailInput);
+  logUser(currentUser);
 };
 
+function logUser(user) {
+  console.log(currentUser.username);
+  console.log(currentUser.email);
+  console.log(currentUser.password);
+}
+
+function checkLogin(usernameInputLength, emailInputLength, passwordInputLength) {
+  if (usernameInputLength >= 3 && usernameInputLength <= 12) {
+    if (passwordInputLength >= 8 && passwordInputLength <= 20) {
+      if (emailInputLength > 0) warningRegisterMessage.textContent = null;
+      else warningRegisterMessage.textContent = "Email is invalid.";
+    } else if (passwordInputLength >= 20)
+      warningRegisterMessage.textContent =
+        "Password must be no longer than 20 letters.";
+    else
+      warningRegisterMessage.textContent =
+        "Password must be atleast 8 letters long.";
+  } else if (usernameInputLength >= 12)
+    warningRegisterMessage.textContent =
+      "Username must be no longer than 12 letters.";
+  else
+    warningRegisterMessage.textContent =
+      "Username must be atleast 3 letters long.";
+}
+
+function checkRegistration(usernameInputLength, passwordInputLength) {
+  if (usernameInputLength >= 3 && usernameInputLength <= 12) {
+    if (passwordInputLength >= 8 && passwordInputLength <= 20) {
+      warningLoginMessage.textContent = null;
+    } else if (passwordInputLength >= 20)
+      warningLoginMessage.textContent =
+        "Password must be no longer than 20 letters.";
+    else
+      warningLoginMessage.textContent =
+        "Password must be atleast 8 letters long.";
+  } else if (usernameInputLength >= 12)
+    warningLoginMessage.textContent =
+      "Username must be no longer than 12 letters.";
+  else
+    warningLoginMessage.textContent =
+      "Username must be atleast 3 letters long.";
+}
