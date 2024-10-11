@@ -96,9 +96,13 @@ header:hover {
 }
 
 /* Image slideshow */
+.slideShow {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
 .slider {
     width: 100%;
-    max-height: 100px;
     position: relative;
     margin: auto;
     z-index: 1;
@@ -136,20 +140,22 @@ header:hover {
 
 .imageCaption {
     color: #ffffff;
-    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: 500;
     padding: 8px 12px;
     position: absolute;
-    bottom: 8px;
+    bottom: 40px;
     width: 100%;
     text-align: center;
 }
 
 .dot-container {
     position: absolute;
-    bottom: 400px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 10;
+    z-index: 1;
     display: flex;
     justify-content: center;
 }
@@ -201,6 +207,7 @@ header:hover {
     overflow: hidden;
     transform: scale(0);
     transition: transform 0.5s ease, height 0.2s ease;
+    z-index: 10;
 }
 
 .wrapper.active-popup {
