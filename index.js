@@ -1,20 +1,25 @@
 // Image slideshow
+
+// Image indexing dots
 const dot1 = document.querySelector("#dot1");
 const dot2 = document.querySelector("#dot2");
 const dot3 = document.querySelector("#dot3");
 
 let slideIndex = 0;
 
-showSlidesAuto();
+showSlidesAuto(); // Automatically change the slide
 
+// Next image
 function plusSlides(n) {
   showSlides((slideIndex += n));
 }
 
+// Previous image
 function currentSlide(n) {
   showSlides((slideIndex = n));
 }
 
+// Manual slide control
 function showSlides(n) {
   let i;
   let slides = document.getElementsByClassName("slides");
@@ -24,13 +29,13 @@ function showSlides(n) {
   if (n < 1) slideIndex = slides.length;
 
   for (i = 0; i < slides.length; i++) slides[i].style.display = "none";
-  for (i = 0; i < dots.length; i++)
-    dots[i].className = dots[i].className.replace(" active", "");
+  for (i = 0; i < dots.length; i++) dots[i].className = dots[i].className.replace(" active", "");
 
   slides[slideIndex - 1].style.display = "block";
   dots[slideIndex - 1].className += " active";
 }
 
+// Automatic slide control
 function showSlidesAuto() {
   let i = slideIndex;
   let slides = document.getElementsByClassName("slides");
@@ -43,6 +48,7 @@ function showSlidesAuto() {
 
   slides[slideIndex - 1].style.display = "block";
 
+  // Image indexing dots' behavior
   switch (slideIndex - 1) {
     case 0:
       dot1.classList.add("active");
@@ -65,7 +71,7 @@ function showSlidesAuto() {
       dot3.classList.remove("active");
   }
 
-  setTimeout(showSlidesAuto, 5000);
+  setTimeout(showSlidesAuto, 5000); // Change the image every 5.000 seconds
 }
 
 // Authentication widget
@@ -74,6 +80,9 @@ const loginLink = document.querySelector(".login-link");
 const registerLink = document.querySelector(".register-link");
 const btnPopup = document.querySelector(".btnLogin-popup");
 const iconClose = document.querySelector(".icon-close");
+
+// active-popup: login/registration form visible
+// active: registration form
 
 registerLink.addEventListener("click", () => {
   wrapper.classList.add("active");
@@ -98,9 +107,12 @@ let usernameInput;
 let emailInput;
 let passwordInput;
 
+// Test
+/*
 console.log("Username:", usernameInput);
 console.log("Password:", passwordInput);
 console.log("Email:", emailInput);
+*/
 
 class User {
   constructor(username, password, email) {
