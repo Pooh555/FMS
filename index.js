@@ -49,8 +49,13 @@ function showSlidesAuto() {
 
   slides[slideIndex - 1].style.display = "block";
 
-  // Image indexing dots' behavior
-  switch (slideIndex - 1) {
+  dotsCurrentState(slideIndex); 
+  setTimeout(showSlidesAuto, 5000); // Change the image every 5.000 seconds
+}
+
+// Image indexing dots' behavior
+function dotsCurrentState(index) {
+  switch (index - 1) {
     case 0:
       dot1.classList.add("active");
       dot2.classList.remove("active");
@@ -71,10 +76,8 @@ function showSlidesAuto() {
       dot2.classList.remove("active");
       dot3.classList.remove("active");
   }
-
-  setTimeout(showSlidesAuto, 5000); // Change the image every 5.000 seconds
 }
-
+ 
 // Authentication widget
 const wrapper = document.querySelector(".wrapper");
 const loginLink = document.querySelector(".login-link");
