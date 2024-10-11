@@ -11,7 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url("/assets/images/background_home.jpg") no-repeat;
+    background: #ffffff;
     background-position: top;
     background-size: cover;
 }
