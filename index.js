@@ -94,32 +94,30 @@ iconClose.addEventListener("click", () => {
   }, 300);
 });
 
+let usernameInput;
 let emailInput;
 let passwordInput;
 
-console.log("Email:", emailInput);
+console.log("Username:", usernameInput);
 console.log("Password:", passwordInput);
+console.log("Email:", emailInput);
 
 class User {
   constructor(username, password, email) {
     this.username = username;
-    this.password = password;
+    this.password = password; 
     this.email = email;
   }
 
   set username(newUsername) {
-    if (
-      newUsername != null &&
-      newUsername.length >= 3 &&
-      newUsername.length <= 12
-    )
+    if (newUsername != null && newUsername.length >= 3 && newUsername.length <= 12)
       this._username = newUsername;
     else if (newUsername.length > 12)
       console.error("Username must be no longer than 12 letters.");
     else console.error("Username must be atleast 3 letters long.");
   }
 
-  set password(password) {
+  set password(newPassword) {
     if (newPassword != null && newPassword.length >= 8 && newPassword <= 20)
       this._password = newPassword;
     else if (newPassword.length >= 20)
@@ -167,12 +165,14 @@ register.onclick = function () {
   else console.log("The user does not accept the terms and conditions.");
 
   // Get username and password
-  emailInput = document.querySelector('input[type="email"]').value;
+  usernameInput = document.querySelector('input[type="username"]').value;
   passwordInput = document.querySelector('input[type="password"]').value;
+  emailInput = document.querySelector('input[type="email"]').value;
 
   // Test
-  console.log(`email: ${emailInput}`);
+  console.log(`username: ${usernameInput}`);
   console.log(`password: ${passwordInput}`);
+  console.log(`email: ${emailInput}`);
 };
 
-const currentUser = new User(null, password, email);
+// const currentUser = new User(usernameInput, passwordInput, emailInput);
