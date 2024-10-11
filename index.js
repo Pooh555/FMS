@@ -164,15 +164,18 @@ register.onclick = function () {
   if (agreeToTerms.checked) console.log("The user has agreed to the terms and conditions.");
   else console.log("The user does not accept the terms and conditions.");
 
-  // Get username and password
-  usernameInput = document.querySelector('input[type="username"]').value;
-  passwordInput = document.querySelector('input[type="password"]').value;
-  emailInput = document.querySelector('input[type="email"]').value;
+  // Scope the input
+  const registerForm = document.querySelector('.form-box.register');
 
+  // Get username and password
+  usernameInput = registerForm.querySelector('input[type="username"]').value;
+  emailInput = registerForm.querySelector('input[type="email"]').value;
+  passwordInput = registerForm.querySelector('input[type="password"]').value;
+  
   // Test
   console.log(`username: ${usernameInput}`);
-  console.log(`password: ${passwordInput}`);
   console.log(`email: ${emailInput}`);
+  console.log(`password: ${passwordInput}`);
 };
 
 // const currentUser = new User(usernameInput, passwordInput, emailInput);
