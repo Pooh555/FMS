@@ -184,7 +184,7 @@ login.onclick = function () {
   console.log(`Password: ${passwordInput}`);
 
   // Create a user instance
-  const currentUser = new User(usernameInput, passwordInput, emailInput);
+  const currentUser = new User(usernameInput, passwordInput, null);
 };
 
 register.onclick = function () {
