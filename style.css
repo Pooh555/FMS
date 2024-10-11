@@ -99,13 +99,12 @@ header:hover {
 .slideShow {
     position: absolute;
     top: 0;
-    z-index: -1;
+    z-index: 1;
 }
 .slider {
     width: 100%;
     position: relative;
     margin: auto;
-    z-index: 1;
 }
 
 .slides {
