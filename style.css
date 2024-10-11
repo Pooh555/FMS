@@ -257,6 +257,7 @@ header:hover {
     align-items: center;
     border-bottom-left-radius: 10px;
     overflow: hidden;
+    z-index: 10;
 }
 
 .form-box h2 {
@@ -312,7 +313,7 @@ header:hover {
 
 .remember-forgot {
     font-size: 0.9em;
-    color: #162938;
+    color: #381616;
     font-weight: 400;
     margin: -15px 0 15px;
     display: flex;

@@ -150,9 +150,12 @@ login.onclick = function () {
   if (rememberMe.checked) console.log("The data is stored.");
   else console.log("The data will be forgotten.");
 
+  // Scope the input
+  const loginForm = document.querySelector('.form-box.login');
+
   // Get email and password
-  emailInput = document.querySelector('input[type="email"]').value;
-  passwordInput = document.querySelector('input[type="password"]').value;
+  emailInput = loginForm.querySelector('input[type="email"]').value;
+  passwordInput = loginForm.querySelector('input[type="password"]').value;
 
   // Test
   console.log(`email: ${emailInput}`);
