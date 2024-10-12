@@ -171,7 +171,7 @@ login.onclick = function () {
   usernameInputLength = Number(usernameInput.length);
   passwordInputLength = Number(passwordInput.length);
 
-  checkRegistration(usernameInputLength, passwordInputLength);
+  checkLogin(usernameInputLength, passwordInputLength);
 
   // Test
   console.log(`Username: ${usernameInput}`);
@@ -219,7 +219,25 @@ function logUser(user) {
   console.log(currentUser.password);
 }
 
-function checkLogin(usernameInputLength, emailInputLength, passwordInputLength) {
+function checkLogin(usernameInputLength, passwordInputLength) {
+  if (usernameInputLength >= 3 && usernameInputLength <= 12) {
+    if (passwordInputLength >= 8 && passwordInputLength <= 20) {
+      warningLoginMessage.textContent = null;
+    } else if (passwordInputLength >= 20)
+      warningLoginMessage.textContent =
+        "Password must be no longer than 20 letters.";
+    else
+      warningLoginMessage.textContent =
+        "Password must be atleast 8 letters long.";
+  } else if (usernameInputLength >= 12)
+    warningLoginMessage.textContent =
+      "Username must be no longer than 12 letters.";
+  else
+    warningLoginMessage.textContent =
+      "Username must be atleast 3 letters long.";
+}
+
+function checkRegistration(usernameInputLength, emailInputLength, passwordInputLength) {
   if (usernameInputLength >= 3 && usernameInputLength <= 12) {
     if (passwordInputLength >= 8 && passwordInputLength <= 20) {
       if (emailInputLength > 0) warningRegisterMessage.textContent = null;
@@ -235,23 +253,5 @@ function checkLogin(usernameInputLength, emailInputLength, passwordInputLength) 
       "Username must be no longer than 12 letters.";
   else
     warningRegisterMessage.textContent =
-      "Username must be atleast 3 letters long.";
-}
-
-function checkRegistration(usernameInputLength, passwordInputLength) {
-  if (usernameInputLength >= 3 && usernameInputLength <= 12) {
-    if (passwordInputLength >= 8 && passwordInputLength <= 20) {
-      warningLoginMessage.textContent = null;
-    } else if (passwordInputLength >= 20)
-      warningLoginMessage.textContent =
-        "Password must be no longer than 20 letters.";
-    else
-      warningLoginMessage.textContent =
-        "Password must be atleast 8 letters long.";
-  } else if (usernameInputLength >= 12)
-    warningLoginMessage.textContent =
-      "Username must be no longer than 12 letters.";
-  else
-    warningLoginMessage.textContent =
       "Username must be atleast 3 letters long.";
 }
