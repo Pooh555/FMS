@@ -1,0 +1,14 @@
+// Non-static display value
+function updateAuthButtonMessage() {
+  const authBtnMessage = document.getElementById("authBtn");
+
+  if (Boolean(localStorage.getItem("isAuth")) == true) {
+    if (localStorage.getItem("username") != null) {
+      authBtnMessage.textContent = localStorage.getItem("username");
+    } else console.log("Some values in local storage are missing.");
+  } else if (Boolean(sessionStorage.getItem("isAuth")) == true) {
+    if (sessionStorage.getItem("username") != null) {
+      authBtnMessage.textContent = sessionStorage.getItem("username");
+    } else console.log("Some values in session storage are missing.");
+  } else console.log("Unauthorized");
+}

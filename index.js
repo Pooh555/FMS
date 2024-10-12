@@ -1,15 +1,5 @@
 // Non-static display value
-const authBtnMessage = document.getElementById("authBtn");
-
-if (Boolean(localStorage.getItem("isAuth")) == true) {
-  if (localStorage.getItem("username") != null) {
-    authBtnMessage.textContent = localStorage.getItem("username");
-  } else console.log("Some values in local storage are missing.");
-} else if (Boolean(sessionStorage.getItem("isAuth")) == true) {
-  if (sessionStorage.getItem("username") != null) {
-    authBtnMessage.textContent = localStorage.getItem("username");
-  } else console.log("Some values in seesion storage are missing.");
-} else console.log("Unauthorized");
+updateAuthButtonMessage();
 
 // Image slideshow
 
@@ -110,9 +100,9 @@ loginLink.addEventListener("click", () => {
 });
 
 btnPopup.addEventListener("click", () => {
-  if (Boolean(localStorage.getItem("isAuth")) == true || Boolean(sessionStorage.getItem("isAuth"))) {
-    authBtnMessage.textContent = localStorage.getItem("username");
-  } else console.log("Some values in local storage are missing.");
+  if (1) {
+    console.log("SHIT");
+  } else console.log("SHIT2");
   wrapper.classList.add("active-popup");
 });
 
@@ -306,14 +296,14 @@ function authentication(user) {
           sessionStorage.clear();
           localStorage.setItem("isAuth", true);
           localStorage.setItem("username", username);
-          authBtnMessage.textContent = username;
+          updateAuthButtonMessage();
         } else {
           localStorage.clear();
           sessionStorage.clear();
           localStorage.setItem("isAuth", "false");
           sessionStorage.setItem("isAuth", true);
           sessionStorage.setItem("username", username);
-          authBtnMessage.textContent = username;
+          updateAuthButtonMessage();
         }
       } else return "Login unsuccessful: " + response;
     }
