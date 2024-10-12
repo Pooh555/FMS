@@ -2,5 +2,22 @@
     background: url("/assets/images/services_widget_storage.jpg");   
     background-position: center;
     background-size: cover;
-    box-shadow: 0 0 25px rgba(86, 36, 36, 0.5);
+}
+
+#widget2 {
+    background: url("/assets/images/services_widget_2.jpg");   
+    background-position: center;
+    background-size: cover;
+}
+
+#widget3 {
+    background: url("/assets/images/services_widget_3.jpg");   
+    background-position: center;
+    background-size: cover;
+}
+
+#widget4 {
+    background: url("/assets/images/services_widget_4.png");   
+    background-position: center;
+    background-size: cover;
 }

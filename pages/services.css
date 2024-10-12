@@ -26,8 +26,9 @@ body {
     position: relative;
     margin-inline-start: 2vw;
     margin-top: 2vw;
-    background: #000000;
+    background: #ffc9c9;
     display: inline-flex;
     border-radius: 15px;
     backdrop-filter: blur(15px);
+    box-shadow: 0 0 18px rgba(86, 36, 36, 0.5);
 }
