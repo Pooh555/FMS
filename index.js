@@ -290,7 +290,6 @@ function authentication(user) {
     { username, password },
     function (response, status, xhr) {
       if (xhr.status === 200) {
-        window.location.href = "/pages/home.html";
         if (rememberMe.checked) {
           localStorage.clear();
           sessionStorage.clear();
@@ -300,7 +299,7 @@ function authentication(user) {
         } else {
           localStorage.clear();
           sessionStorage.clear();
-          localStorage.setItem("isAuth", "false");
+          localStorage.setItem("isAuth", false);
           sessionStorage.setItem("isAuth", true);
           sessionStorage.setItem("username", username);
           updateAuthButtonMessage();
