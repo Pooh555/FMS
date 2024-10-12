@@ -8,7 +8,7 @@ const dot1 = document.querySelector("#dot1");
 const dot2 = document.querySelector("#dot2");
 const dot3 = document.querySelector("#dot3");
 
-let slideIndex = 2;
+let slideIndex = 1;
 
 showSlidesAuto(); // Automatically change the slide
 
