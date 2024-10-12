@@ -29,4 +29,5 @@ body {
     background: #000000;
     display: inline-flex;
     border-radius: 15px;
+    backdrop-filter: blur(15px);
 }

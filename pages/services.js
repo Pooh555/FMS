@@ -82,8 +82,8 @@ function dotsCurrentState(index) {
 }
 
 // Services route bottons
-const btnStorage = document.querySelector(".btnStorage");
+const widgetStorage = document.querySelector("#widgetStorage");
 
-btnStorage.addEventListener("click", () => {
+widgetStorage.addEventListener("click", () => {
   window.location.href = "./services/storage.html";
 });
