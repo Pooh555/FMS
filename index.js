@@ -4,16 +4,12 @@ const authBtnMessage = document.getElementById("authBtn");
 if (Boolean(localStorage.getItem("isAuth")) == true) {
   if (localStorage.getItem("username") != null) {
     authBtnMessage.textContent = localStorage.getItem("username");
-  }
-} else {
+  } else console.log("Some values in local storage are missing.");
+} else if (Boolean(sessionStorage.getItem("isAuth")) == true) {
   if (sessionStorage.getItem("username") != null) {
-  authBtnMessage.textContent = localStorage.getItem("username");
-  console.log(
-    localStorage.getItem("isAuth"),
-    typeof localStorage.getItem("isAuth")
-  );
-}
-}
+    authBtnMessage.textContent = localStorage.getItem("username");
+  } else console.log("Some values in seesion storage are missing.");
+} else console.log("Unauthorized");
 
 // Image slideshow
 
@@ -114,6 +110,9 @@ loginLink.addEventListener("click", () => {
 });
 
 btnPopup.addEventListener("click", () => {
+  if (Boolean(localStorage.getItem("isAuth")) == true || Boolean(sessionStorage.getItem("isAuth"))) {
+    authBtnMessage.textContent = localStorage.getItem("username");
+  } else console.log("Some values in local storage are missing.");
   wrapper.classList.add("active-popup");
 });
 
@@ -301,15 +300,18 @@ function authentication(user) {
     { username, password },
     function (response, status, xhr) {
       if (xhr.status === 200) {
-        //   window.location.href = "/pages/home.html";
+        window.location.href = "/pages/home.html";
         if (rememberMe.checked) {
           localStorage.clear();
-          localStorage.setItem("isAuth", "true");
+          sessionStorage.clear();
+          localStorage.setItem("isAuth", true);
           localStorage.setItem("username", username);
           authBtnMessage.textContent = username;
         } else {
           localStorage.clear();
+          sessionStorage.clear();
           localStorage.setItem("isAuth", "false");
+          sessionStorage.setItem("isAuth", true);
           sessionStorage.setItem("username", username);
           authBtnMessage.textContent = username;
         }
@@ -321,17 +323,3 @@ function authentication(user) {
 
   return null;
 }
-
-/*
-$.get(serverAddress, (username, password, status) => {
-  console.log(username);
-  console.log(password);
-  console.log(status);
-});
-*/
-
-/*
-$.post(serverAddress+"/login", function(username, hashedPassword, status) {
-  alert("Username: " + username + "\nhashedPassword: " + hashedPassword, "\nStatus: " + status);
-});
-*/
