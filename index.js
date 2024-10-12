@@ -1,3 +1,20 @@
+// Non-static display value
+const authBtnMessage = document.getElementById("authBtn");
+
+if (Boolean(localStorage.getItem("isAuth")) == true) {
+  if (localStorage.getItem("username") != null) {
+    authBtnMessage.textContent = localStorage.getItem("username");
+  }
+} else {
+  if (sessionStorage.getItem("username") != null) {
+  authBtnMessage.textContent = localStorage.getItem("username");
+  console.log(
+    localStorage.getItem("isAuth"),
+    typeof localStorage.getItem("isAuth")
+  );
+}
+}
+
 // Image slideshow
 
 // Image indexing dots
@@ -184,7 +201,8 @@ login.onclick = function () {
   // logUser(currentUser);
 
   // Authenticate with the server.
-  authentication(currentUser);
+  console.log(authentication(currentUser));
+  // warningLoginMessage.textContent = authentication(currentUser);
 };
 
 register.onclick = function () {
@@ -274,6 +292,7 @@ function checkRegistration(
 // Backend services
 const serverAddress = "http://localhost:3000/users";
 
+// User authentication
 function authentication(user) {
   const { username, password } = user;
 
@@ -281,16 +300,27 @@ function authentication(user) {
     serverAddress + "/login",
     { username, password },
     function (response, status, xhr) {
-      if (xhr.status === 200)
-        window.location.href = "/pages/home.html";
-      else return("Login unsuccessful: " + response);
+      if (xhr.status === 200) {
+        //   window.location.href = "/pages/home.html";
+        if (rememberMe.checked) {
+          localStorage.clear();
+          localStorage.setItem("isAuth", "true");
+          localStorage.setItem("username", username);
+          authBtnMessage.textContent = username;
+        } else {
+          localStorage.clear();
+          localStorage.setItem("isAuth", "false");
+          sessionStorage.setItem("username", username);
+          authBtnMessage.textContent = username;
+        }
+      } else return "Login unsuccessful: " + response;
     }
   ).fail(function (xhr) {
-    return("Login unsuccessful: " + xhr.responseText);
+    return "Login unsuccessful: " + xhr.responseText;
   });
 
-  return("sucess")
-;}
+  return null;
+}
 
 /*
 $.get(serverAddress, (username, password, status) => {
