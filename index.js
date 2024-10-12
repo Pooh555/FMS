@@ -49,7 +49,7 @@ function showSlidesAuto() {
 
   slides[slideIndex - 1].style.display = "block";
 
-  dotsCurrentState(slideIndex); 
+  dotsCurrentState(slideIndex);
   setTimeout(showSlidesAuto, 5000); // Change the image every 5.000 seconds
 }
 
@@ -77,7 +77,7 @@ function dotsCurrentState(index) {
       dot3.classList.remove("active");
   }
 }
- 
+
 // Authentication widget
 const wrapper = document.querySelector(".wrapper");
 const loginLink = document.querySelector(".login-link");
@@ -181,7 +181,10 @@ login.onclick = function () {
 
   // Create a user instance
   currentUser = new User(usernameInput, passwordInput, null);
-  logUser(currentUser);
+  // logUser(currentUser);
+
+  // Authenticate with the server.
+  authentication(currentUser);
 };
 
 register.onclick = function () {
@@ -214,7 +217,9 @@ register.onclick = function () {
 
   // Create a user instance
   currentUser = new User(usernameInput, passwordInput, emailInput);
-  logUser(currentUser);
+  // logUser(currentUser);
+
+  authentication(currentUser);
 };
 
 function logUser(user) {
@@ -223,6 +228,7 @@ function logUser(user) {
   console.log(currentUser.password);
 }
 
+// Check login information conditions
 function checkLogin(usernameInputLength, passwordInputLength) {
   if (usernameInputLength >= 3 && usernameInputLength <= 12) {
     if (passwordInputLength >= 8 && passwordInputLength <= 20) {
@@ -241,7 +247,12 @@ function checkLogin(usernameInputLength, passwordInputLength) {
       "Username must be atleast 3 letters long.";
 }
 
-function checkRegistration(usernameInputLength, emailInputLength, passwordInputLength) {
+// Check registration information conditions
+function checkRegistration(
+  usernameInputLength,
+  emailInputLength,
+  passwordInputLength
+) {
   if (usernameInputLength >= 3 && usernameInputLength <= 12) {
     if (passwordInputLength >= 8 && passwordInputLength <= 20) {
       if (emailInputLength > 0) warningRegisterMessage.textContent = null;
@@ -260,14 +271,37 @@ function checkRegistration(usernameInputLength, emailInputLength, passwordInputL
       "Username must be atleast 3 letters long.";
 }
 
+// Backend services
 const serverAddress = "http://localhost:3000/users";
 
+function authentication(user) {
+  const { username, password } = user;
+
+  $.post(
+    serverAddress + "/login",
+    { username, password },
+    function (response, status, xhr) {
+      if (xhr.status === 200)
+        window.location.href = "/pages/home.html";
+      else return("Login unsuccessful: " + response);
+    }
+  ).fail(function (xhr) {
+    return("Login unsuccessful: " + xhr.responseText);
+  });
+
+  return("sucess")
+;}
+
 /*
-$.get(serverAddress, (data, status) => {
-  console.log(data);
+$.get(serverAddress, (username, password, status) => {
+  console.log(username);
+  console.log(password);
+  console.log(status);
 });
 */
 
-$.post(serverAddress, function(data, status){
-  alert("Data: " + data + "\nStatus: " + status);
+/*
+$.post(serverAddress+"/login", function(username, hashedPassword, status) {
+  alert("Username: " + username + "\nhashedPassword: " + hashedPassword, "\nStatus: " + status);
 });
+*/
