@@ -174,8 +174,10 @@ login.onclick = function () {
   checkLogin(usernameInputLength, passwordInputLength);
 
   // Test
+  /*
   console.log(`Username: ${usernameInput}`);
   console.log(`Password: ${passwordInput}`);
+  */
 
   // Create a user instance
   currentUser = new User(usernameInput, passwordInput, null);
@@ -204,9 +206,11 @@ register.onclick = function () {
   checkRegistration(usernameInputLength, emailInputLength, passwordInputLength);
 
   // Test
+  /*
   console.log(`Username: ${usernameInput}`);
   console.log(`Email: ${emailInput}`);
   console.log(`Password: ${passwordInput}`);
+  */
 
   // Create a user instance
   currentUser = new User(usernameInput, passwordInput, emailInput);
@@ -255,3 +259,7 @@ function checkRegistration(usernameInputLength, emailInputLength, passwordInputL
     warningRegisterMessage.textContent =
       "Username must be atleast 3 letters long.";
 }
+
+$.get("http://localhost:3000/users", (data, status) => {
+  console.log(data);
+});
