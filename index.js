@@ -260,6 +260,14 @@ function checkRegistration(usernameInputLength, emailInputLength, passwordInputL
       "Username must be atleast 3 letters long.";
 }
 
-$.get("http://localhost:3000/users", (data, status) => {
+const serverAddress = "http://localhost:3000/users";
+
+/*
+$.get(serverAddress, (data, status) => {
   console.log(data);
+});
+*/
+
+$.post(serverAddress, function(data, status){
+  alert("Data: " + data + "\nStatus: " + status);
 });
