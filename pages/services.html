@@ -8,6 +8,7 @@
     <title>File Management System</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="services.css">
+    <link rel="stylesheet" href="services_widgets.css">
     <link rel="icon" type="image" href="/assets/images/falvicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +29,7 @@
             <button class="btnLogin-popup" id="authBtn">Login</button>
         </nav>
     </header>
-    
+
     <!-- Image slider -->
     <div class="slideShow">
         <div class="slider">
@@ -38,12 +39,12 @@
             </div>
 
             <div class="slides fade">
-                <img class="slide" src="/assets/images/services_2.jpg" style="width:100%" alt="Image#2">
+                <img class="slide" src="/assets/images/services_2.png" style="width:100%" alt="Image#2">
                 <div class="imageCaption">"In this world that is so blue, I will sing aloud for you"</div>
             </div>
 
             <div class="slides fade">
-                <img class="slide" src="/assets/images/services_3.jpg" style="width:100%" alt="Image#3">
+                <img class="slide" src="/assets/images/services_3.png" style="width:100%" alt="Image#3">
                 <div class="imageCaption">"In this painted galaxy, there are things we never see"</div>
             </div>
 
@@ -60,9 +61,23 @@
             <span class="dot" id="dot3" onclick="currentSlide(3)"></span>
         </div>
     </div>
-    
-    <p>services</p>
-    <button class="btnStorage" id="authBtn">Storage</button>
+
+
+    <div class="content">
+        <div class="space"></div>
+        <!-- List of services -->
+        <div class="services">
+            <div class="widget" type="service" id="widgetStorage"></div>
+            <div class="widget" type="service"></div>
+            <div class="widget" type="service"></div>
+            <div class="widget" type="service"></div>
+            <div class="widget" type="service"></div>
+            <div class="widget" type="service"></div>
+            <div class="widget" type="service"></div>
+        </div>
+    </div>
+
+    <!-- <button class="btnStorage" id="authBtn">Storage</button> -->
 
     <script src="/assets/scripts/scripts.js"></script>
     <script src="services.js"></script>
