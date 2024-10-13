@@ -82,6 +82,7 @@ function dotsCurrentState(index) {
 }
 
 // Authentication widget
+let logout;
 const wrapper = document.querySelector(".wrapper");
 const loginLink = document.querySelector(".login-link");
 const registerLink = document.querySelector(".register-link");
@@ -100,10 +101,18 @@ loginLink.addEventListener("click", () => {
 });
 
 btnPopup.addEventListener("click", () => {
-  if (1) {
-    console.log("SHIT");
-  } else console.log("SHIT2");
-  wrapper.classList.add("active-popup");
+  if (localStorage.getItem("isAuth") == "true" || sessionStorage.getItem("isAuth") == "true") {
+    logout = window.prompt("Do you wish to logout (y/n): ");
+    logout = logout.toLowerCase();
+
+    if (logout === "y") {
+      localStorage.clear();
+      sessionStorage.clear();
+      window.location.assign("../index.html");
+    } else console.log("The user does not wish to logout.");
+  } else {
+    wrapper.classList.add("active-popup");
+  }
 });
 
 iconClose.addEventListener("click", () => {
@@ -304,6 +313,8 @@ function authentication(user) {
           sessionStorage.setItem("username", username);
           updateAuthButtonMessage();
         }
+
+        window.location.assign("index.html");
       } else return "Login unsuccessful: " + response;
     }
   ).fail(function (xhr) {
