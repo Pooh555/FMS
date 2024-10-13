@@ -1,3 +1,11 @@
+.widgetBox:hover {
+    transform: scale(1.05);
+}
+
+.widget:hover {
+    transform: scale(1.15);
+}
+
 #widgetStorage {
     background: url("/assets/images/services_widget_storage.jpg");   
     background-position: center;

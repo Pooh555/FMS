@@ -81,7 +81,7 @@ function dotsCurrentState(index) {
   }
 }
 
-// Services route bottons
+// Services route widgets
 const widgetStorage = document.querySelector("#widgetStorage");
 
 widgetStorage.addEventListener("click", () => {
