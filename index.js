@@ -314,7 +314,7 @@ function authentication(user) {
           updateAuthButtonMessage();
         }
 
-        window.location.assign("index.html");
+        window.location.assign("/pages/services.html");
       } else return "Login unsuccessful: " + response;
     }
   ).fail(function (xhr) {
