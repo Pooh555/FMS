@@ -12,7 +12,7 @@ body {
     width: 31ch;
     height: 75ch;
     position: relative;
-    margin-inline-start: 2vw;
+    margin-inline: 0.7em;
     margin-top: 2vw;
     background: #ffc9c9;
     display: inline-flex;
@@ -51,6 +51,7 @@ body {
 
 .content {
     align-items: center;
+    justify-content: center;
 }
 
 .space {
