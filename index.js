@@ -101,7 +101,10 @@ loginLink.addEventListener("click", () => {
 });
 
 btnPopup.addEventListener("click", () => {
-  if (localStorage.getItem("isAuth") == "true" || sessionStorage.getItem("isAuth") == "true") {
+  if (
+    localStorage.getItem("isAuth") == "true" ||
+    sessionStorage.getItem("isAuth") == "true"
+  ) {
     logout = window.prompt("Do you wish to logout (y/n): ");
     logout = logout.toLowerCase();
 
@@ -207,7 +210,11 @@ register.onclick = function () {
   // Evaluate checkbox status
   if (agreeToTerms.checked)
     console.log("The user has agreed to the terms and conditions.");
-  else console.log("The user does not accept the terms and conditions.");
+  else {
+    console.log("The user does not accept the terms and conditions.");
+
+    return 0;
+  }
 
   // Scope the input
   const registerForm = document.querySelector(".form-box.register");
@@ -235,7 +242,7 @@ register.onclick = function () {
   currentUser = new User(usernameInput, passwordInput, emailInput);
   // logUser(currentUser);
 
-  authentication(currentUser);
+  registerUser(currentUser);
 };
 
 function logUser(user) {
@@ -271,8 +278,9 @@ function checkRegistration(
 ) {
   if (usernameInputLength >= 3 && usernameInputLength <= 12) {
     if (passwordInputLength >= 8 && passwordInputLength <= 20) {
-      if (emailInputLength > 0) warningRegisterMessage.textContent = null;
-      else warningRegisterMessage.textContent = "Email is invalid.";
+      if (emailInputLength === 0 || !validateEmail(emailInput))
+        warningRegisterMessage.textContent = "Email is invalid.";
+      else warningRegisterMessage.textContent = null;
     } else if (passwordInputLength >= 20)
       warningRegisterMessage.textContent =
         "Password must be no longer than 20 letters.";
@@ -322,4 +330,38 @@ function authentication(user) {
   });
 
   return null;
+}
+
+// User registration
+function registerUser(user) {
+  const { username, email, password } = user;
+
+  $.post(
+    serverAddress + "/register",
+    { username, email, password },
+    function (response, status, xhr) {
+      if (xhr.status === 201) {
+        console.log("Registration successful!");
+        localStorage.clear();
+        sessionStorage.clear();
+        localStorage.setItem("isAuth", false);
+        sessionStorage.setItem("isAuth", true);
+        sessionStorage.setItem("username", username);
+        updateAuthButtonMessage();
+        window.location.assign("/pages/services.html");
+      } else {
+        warningRegisterMessage.textContent =
+          "Registration unsuccessful: " + response;
+      }
+    }
+  ).fail(function (xhr) {
+    warningRegisterMessage.textContent =
+      "Registration unsuccessful: " + xhr.responseText;
+  });
+}
+
+// Email validation
+function validateEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
 }
