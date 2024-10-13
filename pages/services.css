@@ -4,12 +4,13 @@ p {
 
 body {
     align-items: top;
+    justify-content: center;
 }
 
 /* Services widgets */
 .widgetBox {
-    width: 22vw;
-    height: 50em;
+    width: 31ch;
+    height: 75ch;
     position: relative;
     margin-inline-start: 2vw;
     margin-top: 2vw;
@@ -64,7 +65,7 @@ body {
 
 .widgetText {
     padding-top: 2vw;
-    font-size: 5vw;
+    font-size: 4em;
     font-weight: 600;
     color: #ffffff ;
     display: block;

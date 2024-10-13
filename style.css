@@ -160,7 +160,7 @@ header:hover {
     font-family: 'Times New Roman', Times, serif;
     font-size: 1.8vw;
     font-weight: 500;
-    padding: 8px 12px;
+    padding: 1vw;
     position: absolute;
     bottom: 40px;
     width: 100%;
@@ -181,7 +181,7 @@ header:hover {
     cursor: pointer;
     height: 1.2vw;
     width: 1.2vw;
-    margin: 0 0.5vw;
+    margin: 0 0.5vw 0.5vw;
     background-color: var(--text-clr-1);
     border-radius: 50%;
     display: inline-block;
