@@ -1,9 +1,15 @@
+:root {
+    --text-clr-1: #ffffff;
+    --text-clr-2: #ffc0c9;
+    --text-clr-3: #381616;
+}
+
 * {
     font-family: "Open Sans", "PT Sans", Calibri, Tahoma, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    box-sizing:border-box
+    box-sizing: border-box
 }
 
 body {
@@ -20,10 +26,10 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #fff center top;
+    background: var(--text-clr-1) center top;
     background-size: cover;
     opacity: 0.5;
-    z-index: -1; 
+    z-index: -1;
 }
 
 /* Navigation bar */
@@ -33,7 +39,7 @@ header {
     left: 0;
     width: 100%;
     padding: 20px 100px;
-    background: rgba(7, 7, 7, 0.0);
+    background: rgba(61, 49, 49, 0.0);
     background-blend-mode: overlay;
     display: flex;
     justify-content: space-between;
@@ -48,14 +54,14 @@ header:hover {
 
 .logo {
     font-size: 2em;
-    color: #ffffff;
+    color: var(--text-clr-1);
     user-select: none;
 }
 
 .navigation a {
     position: relative;
     font-size: 1.1em;
-    color: #ffffff;
+    color: var(--text-clr-1);
     text-decoration: none;
     font-weight: 500;
     margin-left: 40px;
@@ -63,7 +69,7 @@ header:hover {
 }
 
 .navigation a:hover {
-    color: #ffc0c6;
+    color: var(--text-clr-2);
 }
 
 .navigation a::after {
@@ -88,21 +94,22 @@ header:hover {
     width: 130px;
     height: 50px;
     background: transparent;
-    border: 2px solid #ffffff;
+    border: 2px solid var(--text-clr-1);
     outline: none;
     border-radius: 3px;
     cursor: pointer;
     font-size: 1.1em;
-    color: #ffffff;
+    color: var(--text-clr-1);
     font-weight: 500;
     margin-left: 40px;
     transition: .5s;
 }
 
 .navigation .btnLogin-popup:hover {
-    background: #ffffff;
-    color: #914a51;
+    background: var(--text-clr-1);
+    color: var(--text-clr-3);
 }
+
 
 /* Image slideshow */
 .slideShow {
@@ -111,6 +118,7 @@ header:hover {
     content: fill;
     z-index: 1;
 }
+
 .slider {
     width: 100%;
     position: relative;
@@ -129,9 +137,9 @@ header:hover {
     width: auto;
     margin-top: -22px;
     padding: 16px;
-    color: white;
+    color: var(--text-clr-1);
     font-weight: bold;
-    font-size: 18px;
+    font-size: 1em;
     transition: 0.6s ease;
     border-radius: 0 3px 3px 0;
     user-select: none;
@@ -148,9 +156,9 @@ header:hover {
 }
 
 .imageCaption {
-    color: #ffffff;
+    color: var(--text-clr-1);
     font-family: 'Times New Roman', Times, serif;
-    font-size: 20px;
+    font-size: 1.8vw;
     font-weight: 500;
     padding: 8px 12px;
     position: absolute;
@@ -171,10 +179,10 @@ header:hover {
 
 .dot {
     cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #ffffff;
+    height: 1.2vw;
+    width: 1.2vw;
+    margin: 0 0.5vw;
+    background-color: var(--text-clr-1);
     border-radius: 50%;
     display: inline-block;
     transition: background-color 0.6s ease;
@@ -182,7 +190,7 @@ header:hover {
 
 .active,
 .dot:hover {
-    background-color: #ffc0c6;
+    background-color: var(--text-clr-2);
 }
 
 .fade {
@@ -260,9 +268,9 @@ header:hover {
     right: 0;
     width: 45px;
     height: 45px;
-    background: #381616;
+    background: var(--text-clr-3);
     font-size: 2em;
-    color: #ffffff;
+    color: var(--text-clr-1);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -273,7 +281,7 @@ header:hover {
 
 .form-box h2 {
     font-size: 2em;
-    color: #381616;
+    color: var(--text-clr-3);
     text-align: center;
 }
 
@@ -281,7 +289,7 @@ header:hover {
     position: relative;
     width: 100%;
     height: 40px;
-    border-bottom: 2px solid #381616;
+    border-bottom: 2px solid var(--text-clr-3);
     margin: 30px 0;
 }
 
@@ -309,7 +317,7 @@ header:hover {
     border: none;
     outline: none;
     font-size: 1em;
-    color: #381616;
+    color: var(--text-clr-3);
     font-weight: 500;
     padding: 0 35px 0 5px;
 }
@@ -318,13 +326,13 @@ header:hover {
     position: absolute;
     right: 8px;
     font-size: 1.2em;
-    color: #381616;
+    color: var(--text-clr-3);
     line-height: 57pex;
 }
 
 .remember-forgot {
     font-size: 0.9em;
-    color: #381616;
+    color: var(--text-clr-3);
     font-weight: 400;
     margin: -15px 0 15px;
     display: flex;
@@ -332,12 +340,12 @@ header:hover {
 }
 
 .remember-forgot label input {
-    accent-color: #381616;
+    accent-color: var(--text-clr-3);
     margin-right: 3px;
 }
 
 .remember-forgot a {
-    color: #381616;
+    color: var(--text-clr-3);
     text-decoration: none;
 }
 
@@ -348,26 +356,26 @@ header:hover {
 .btn {
     width: 100%;
     height: 45px;
-    background: #381616;
+    background: var(--text-clr-3);
     border: none;
     outline: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
-    color: #ffffff;
+    color: var(--text-clr-1);
     font-weight: 500;
 }
 
 .login-register {
     font-size: 9.em;
-    color: #381616;
+    color: var(--text-clr-3);
     text-align: center;
     font-weight: 400;
     margin: 25px 0 10px;
 }
 
 .login-register p a {
-    color: #381616;
+    color: var(--text-clr-3);
     text-decoration: none;
     font-weight: 600;
 }
