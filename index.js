@@ -296,7 +296,7 @@ function checkRegistration(
 }
 
 // Backend services
-const serverAddress = "http://192.168.100.132:3000/users";
+const serverAddress = "http://10.241.68.145:3000/users";
 
 // User authentication
 function authentication(user) {
