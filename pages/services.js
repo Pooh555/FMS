@@ -1,6 +1,21 @@
 // Non-static display value
 updateAuthButtonMessage();
 
+// Logout
+let logout;
+const btnPopup = document.querySelector(".btnLogin-popup");
+
+btnPopup.addEventListener("click", () => {
+  logout = window.prompt("Do you wish to logout (y/n): ");
+  logout = logout.toLowerCase();
+
+  if (logout === "y") {
+    localStorage.clear();
+    sessionStorage.clear();
+    window.location.assign("../index.html");
+  } else console.log("The user does not wish to logout.");
+});
+
 // Image slideshow
 
 // Image indexing dots
