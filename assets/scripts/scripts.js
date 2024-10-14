@@ -1,3 +1,8 @@
+// Check if the user is authorizezd
+function isAuth(isAuthLocal, isAuthSession) {
+  if (isAuthLocal != "true" && isAuthSession != "true") window.location.assign("../index.html");
+}
+
 // Non-static display value
 function updateAuthButtonMessage() {
   const authBtnMessage = document.getElementById("authBtn");
