@@ -90,7 +90,7 @@ const btnPopup = document.querySelector(".btnLogin-popup");
 const iconClose = document.querySelector(".icon-close");
 
 // Display the auth page if user tries to use services without logging in
-if (sessionStorage.getItem("isLogin")  === "false")
+if (sessionStorage.getItem("isLogin") === "false")
   wrapper.classList.add("active-popup");
 
 // active-popup: login/registration form visible
@@ -304,7 +304,7 @@ function checkRegistration(
 const serverAddress = "http://10.241.68.145:3000/users";
 
 // User authentication
-function authentication(user) {
+async function authentication(user) {
   const { username, password } = user;
 
   $.post(
@@ -325,7 +325,10 @@ function authentication(user) {
           updateAuthButtonMessage();
         }
 
-        window.location.assign("/pages/services.html");
+        // Add delay to cover the response time of the server
+        setTimeout(() => {
+          window.location.assign("pages/services.html");
+        }, 3000);
       } else return "Login unsuccessful: " + response;
     }
   ).fail(function (xhr) {
