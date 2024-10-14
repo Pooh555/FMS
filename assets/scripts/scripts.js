@@ -1,6 +1,9 @@
 // Check if the user is authorizezd
 function isAuth(isAuthLocal, isAuthSession) {
-  if (isAuthLocal != "true" && isAuthSession != "true") window.location.assign("../index.html");
+  if (isAuthLocal != "true" && isAuthSession != "true") {
+    window.location.assign("../index.html");
+    sessionStorage.setItem("isLogin", false);
+  }
 }
 
 // Non-static display value

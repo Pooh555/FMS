@@ -89,6 +89,10 @@ const registerLink = document.querySelector(".register-link");
 const btnPopup = document.querySelector(".btnLogin-popup");
 const iconClose = document.querySelector(".icon-close");
 
+// Display the auth page if user tries to use services without logging in
+if (sessionStorage.getItem("isLogin")  === "false")
+  wrapper.classList.add("active-popup");
+
 // active-popup: login/registration form visible
 // active: registration form
 
@@ -119,6 +123,7 @@ btnPopup.addEventListener("click", () => {
 });
 
 iconClose.addEventListener("click", () => {
+  sessionStorage.removeItem("isLogin");
   wrapper.classList.remove("active-popup");
   setTimeout(() => {
     wrapper.classList.remove("active");
@@ -312,6 +317,7 @@ function authentication(user) {
           sessionStorage.clear();
           localStorage.setItem("isAuth", true);
           localStorage.setItem("username", username);
+          sessionStorage.removeItem("isLogin");
           updateAuthButtonMessage();
         } else {
           localStorage.clear();
@@ -319,6 +325,7 @@ function authentication(user) {
           localStorage.setItem("isAuth", false);
           sessionStorage.setItem("isAuth", true);
           sessionStorage.setItem("username", username);
+          sessionStorage.removeItem("isLogin");
           updateAuthButtonMessage();
         }
 
@@ -347,6 +354,7 @@ function registerUser(user) {
         localStorage.setItem("isAuth", false);
         sessionStorage.setItem("isAuth", true);
         sessionStorage.setItem("username", username);
+        sessionStorage.removeItem("isLogin");
         updateAuthButtonMessage();
         window.location.assign("/pages/services.html");
       } else {
