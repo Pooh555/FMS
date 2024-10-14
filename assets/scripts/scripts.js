@@ -24,3 +24,17 @@ function updateAuthButtonMessage() {
     console.log("Unauthorized");
   }
 }
+
+// Logout
+function wishLogout(wantLogout, btnPopup) {
+  btnPopup.addEventListener("click", () => {
+    wantLogout = window.prompt("Do you wish to logout (y/n): ");
+    wantLogout = wantLogout.toLowerCase();
+
+    if (wantLogout === "y") {
+      localStorage.clear();
+      sessionStorage.clear();
+      window.location.assign("../index.html");
+    } else console.log("The user does not wish to logout.");
+  });
+}

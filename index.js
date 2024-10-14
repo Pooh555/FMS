@@ -313,15 +313,11 @@ function authentication(user) {
     function (response, status, xhr) {
       if (xhr.status === 200) {
         if (rememberMe.checked) {
-          localStorage.clear();
-          sessionStorage.clear();
           localStorage.setItem("isAuth", true);
           localStorage.setItem("username", username);
           sessionStorage.removeItem("isLogin");
           updateAuthButtonMessage();
         } else {
-          localStorage.clear();
-          sessionStorage.clear();
           localStorage.setItem("isAuth", false);
           sessionStorage.setItem("isAuth", true);
           sessionStorage.setItem("username", username);
