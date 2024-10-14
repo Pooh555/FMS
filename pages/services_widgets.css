@@ -7,25 +7,25 @@
 }
 
 #widgetStorage {
-    background: url("/assets/images/services_widget_storage.jpg");   
+    background: url("../assets/images/services_widget_storage.jpg");   
     background-position: center;
     background-size: cover;
 }
 
 #widget2 {
-    background: url("/assets/images/services_widget_2.jpg");   
+    background: url("../assets/images/services_widget_2.jpg");   
     background-position: center;
     background-size: cover;
 }
 
 #widget3 {
-    background: url("/assets/images/services_widget_3.jpg");   
+    background: url("../assets/images/services_widget_3.jpg");   
     background-position: center;
     background-size: cover;
 }
 
 #widget4 {
-    background: url("/assets/images/services_widget_4.png");   
+    background: url("../assets/images/services_widget_4.png");   
     background-position: center;
     background-size: cover;
 }
