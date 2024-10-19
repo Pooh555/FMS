@@ -326,9 +326,11 @@ async function authentication(user) {
         }
 
         // Add delay to cover the response time of the server
+        /*
         setTimeout(() => {
           window.location.assign("pages/services.html");
         }, 3000);
+        */
       } else return "Login unsuccessful: " + response;
     }
   ).fail(function (xhr) {
