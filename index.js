@@ -330,8 +330,8 @@ async function authentication(user) {
         setTimeout(() => {
           window.location.assign("pages/services.html");
         }, 3000);
+        */
       } else return "Login unsuccessful: " + response;
-      */
     }
   ).fail(function (xhr) {
     return "Login unsuccessful: " + xhr.responseText;
