@@ -4,11 +4,13 @@ const isAuthSession = sessionStorage.getItem("isAuth");
 
 isAuth(isAuthLocal, isAuthSession);
 
+let currentUser = new User(null, null, null);
+
 if (sessionStorage.getItem("username") != null) {
-    let currentUser = new User(sessionStorage.getItem("username"), null, null);
+    currentUser.username = sessionStorage.getItem("username");
 }
 if (localStorage.getItem("username") != null) {
-    let currentUser = new User(sessionStorage.getItem("username"), null, null);
+    currentUser.username = localStorage.getItem("username");
 }
 
 
@@ -23,20 +25,4 @@ const serverAddress = "http://10.241.68.145:3000";
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("#upload");
     form.action = `${serverAddress}/users/upload`;
-
-    const { username } = currentUser;
-
-    $.post(
-        serverAddress + `${serverAddress}/users/upload`,
-        { username },
-        function (response, status, xhr) {
-            if (xhr.status === 400) {
-                console.log("Username uploaded.");
-            } else {
-                console.log("Username upload unsuccessful.s");
-            }
-        }
-    ).fail(function (xhr) {
-        console.log("Unable to upload username.");
-    });
 });
