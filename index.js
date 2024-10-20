@@ -331,6 +331,7 @@ async function authentication(user) {
           window.location.assign("pages/services.html");
         }, 3000);
         */
+        window.location.assign("pages/services.html");
       } else return "Login unsuccessful: " + response;
     }
   ).fail(function (xhr) {
