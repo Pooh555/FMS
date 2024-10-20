@@ -31,11 +31,9 @@
     <!-- Uploading files to the server -->
     <div class="upload_files">
         <h2>Upload a file</h2>
-        <form action="http://10.241.68.145:3000/users/upload" method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" id="upload">
             <label for="file">File</label>
-            <br>
             <input id="file" name="file" type="file">
-            <br>
             <button type="submit">Upload</button>
         </form>
     </div>

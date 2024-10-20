@@ -141,37 +141,6 @@ console.log("Email:", emailInput);
 */
 
 let currentUser;
-class User {
-  constructor(username, password, email) {
-    this.username = username;
-    this.password = password;
-    this.email = email;
-  }
-
-  set username(newUsername) {
-    this._username = newUsername;
-  }
-
-  set password(passwordInput) {
-    this._password = passwordInput;
-  }
-
-  set email(newEmail) {
-    this._email = newEmail;
-  }
-
-  get username() {
-    return this._username;
-  }
-
-  get password() {
-    return this._password;
-  }
-
-  get email() {
-    return this._email;
-  }
-}
 
 const warningLoginMessage = document.getElementById("warningLogin");
 const warningRegisterMessage = document.getElementById("warningRegister");
