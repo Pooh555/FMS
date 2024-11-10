@@ -25,7 +25,7 @@ function updateAuthButtonMessage() {
   }
 }
 
-// Logout
+// Logout (temporary)
 function wishLogout(wantLogout, btnPopup) {
   btnPopup.addEventListener("click", () => {
     wantLogout = window.prompt("Do you wish to logout (y/n): ");
